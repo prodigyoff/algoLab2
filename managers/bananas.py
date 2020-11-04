@@ -17,8 +17,7 @@ def find_bananas_per_hour(piles, hours):
     ...
     Exception: Can't eat less than 1 banana per hour :(
     """
-    heapified_piles = piles[:]
-    heap_sort(heapified_piles)
+    heapified_piles = heap_sort(piles)
     max_value = heapified_piles[0]
     while True:
         piles_copy = piles[:]
