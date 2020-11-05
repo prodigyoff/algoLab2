@@ -19,22 +19,24 @@ def find_bananas_per_hour(piles, hours):
     """
     heapified_piles = heap_sort(piles)
     max_value = heapified_piles[0]
+    if max_value == 1:
+        return max_value
     while True:
         piles_copy = piles[:]
         elapsed_time = 0
         array_index = 0
+        if max_value * len(piles_copy) < hours:
+            return 1
         while piles_copy[len(piles) - 1] > 0:
             piles_copy[array_index] -= max_value
             if piles_copy[array_index] <= 0:
                 array_index += 1
             elapsed_time += 1
 
-        if elapsed_time <= hours and max_value != 1:
+        if elapsed_time <= hours:
             max_value -= 1
         else:
             break
-    if max_value == 1:
-        return max_value
     return max_value+1
 
 
