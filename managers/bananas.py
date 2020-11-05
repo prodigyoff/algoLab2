@@ -1,4 +1,4 @@
-from managers.heap_sort import heap_sort
+from managers.utilities import bananas_per_hour_check
 
 
 def find_bananas_per_hour(piles, hours):
@@ -17,27 +17,17 @@ def find_bananas_per_hour(piles, hours):
     >>> find_bananas_per_hour([3, 6, 7, 11], 80)
     1
     """
-    heapified_piles = heap_sort(piles)
-    max_value = heapified_piles[0]
-    if max_value == 1:
-        return max_value
-    while True:
-        piles_copy = piles[:]
-        elapsed_time = 0
-        array_index = 0
-        if max_value * len(piles_copy) < hours:
-            return 1
-        while piles_copy[len(piles) - 1] > 0:
-            piles_copy[array_index] -= max_value
-            if piles_copy[array_index] <= 0:
-                array_index += 1
-            elapsed_time += 1
-
-        if elapsed_time <= hours:
-            max_value -= 1
+    higher_limit = max(piles)
+    lower_limit = min(piles)
+    if higher_limit * len(piles) < hours or higher_limit == 1:
+        return 1
+    while lower_limit < higher_limit:
+        bananas_per_hour = (lower_limit + higher_limit) // 2
+        if bananas_per_hour_check(piles, hours, bananas_per_hour):
+            higher_limit = bananas_per_hour
         else:
-            break
-    return max_value+1
+            lower_limit = bananas_per_hour + 1
+    return higher_limit
 
 
 def main():
