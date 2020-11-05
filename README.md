@@ -3,7 +3,7 @@ To launch doctests using console:
 2.Launch console from here  
 3.Type in console: "python3 -m managers.bananas" (could be "py" or "python" depending on your python version)  
 Brief algorithm description:  
-1.Taking pile with largest bananas amount in it  
-2.Eating bananas in piles untill there is nothing left  
-3.Checking if this number of bananas per hour fits and decreasing it by 1 to find min number which fits  
-4.When we got our number returning number+1 if it's not equal to 1, and if it is: returning number  
+1.Setting higher and lower limits for binary search  
+2.Setting eating speed as average between higher and lower limits  
+3.Checking if our eating speed fits the condition and depending on the result setting higher limit as eating speed or lower limit as eating speed +1  
+4.Repeating step 3 untill lower limit reaches higher limit  
