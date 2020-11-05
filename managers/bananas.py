@@ -6,6 +6,8 @@ def find_bananas_per_hour(piles, hours):
     Returns suitable bananas per hour amount
     >>> find_bananas_per_hour([1, 1, 1, 1], 4)
     1
+    >>> find_bananas_per_hour([3, 6, 7, 11], 8)
+    4
     >>> find_bananas_per_hour([30, 11, 23, 4, 20], 5)
     30
     >>> find_bananas_per_hour([30, 11, 23, 4, 20], 6)
@@ -27,10 +29,8 @@ def find_bananas_per_hour(piles, hours):
                 array_index += 1
             elapsed_time += 1
 
-        if elapsed_time <= hours:
+        if elapsed_time <= hours and max_value != 1:
             max_value -= 1
-            if max_value < 1:
-                break
         else:
             break
     if max_value == 1:
